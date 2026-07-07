@@ -64,7 +64,7 @@ int main()
 				goto Start;
 				
 			}
-		case 2:
+			case 2:
 			{
 					unblo:
 					printf("\n\t\t\t\t\t\tBlock/Unblock Account\n");
@@ -80,26 +80,33 @@ int main()
 					if(strcmp(accnum,acc)==0&&passcheck==pass)
 					{
 						char blo[30];
-						printf("You want to block/unblock");
+						printf("\nYou want to block/unblock:");
 						scanf("%s",&blo);
 						if(strcmp("block",blo)==0)
 						{
 							block:
-							printf("\nAre you sure to block your account:");
-							scanf("%s",&choice);
-							if(strcmp("yes",choice)==0)
+							if(status=1)
 							{
-							status=!status;
-							printf("\nYour Account has been blocked\n");
-							}
-							else if(strcmp("Yes",choice)==0)
-							{
+								printf("\nAre you sure to block your account:");
+								scanf("%s",&choice);
+								if(strcmp("yes",choice)==0)
+								{
 								status=!status;
 								printf("\nYour Account has been blocked\n");
-							}	
+								}
+								else if(strcmp("Yes",choice)==0)
+								{
+									status=!status;
+									printf("\nYour Account has been blocked\n");
+								}	
+								else
+								{
+									printf("\n	Your Account has not been blocked\n");
+								}
+							}
 							else
 							{
-								printf("\n	Your Account has not been blocked\n");
+								printf("\nYour account has already been blocked\n");
 							}
 						}
 						else if(strcmp("Block",blo)==0)
@@ -109,21 +116,28 @@ int main()
 						else if(strcmp("unblock",blo)==0)
 						{
 							unblock:
-							printf("\nAre you sure to unblock your account:");
-							scanf("%s",&choice);
-							if(strcmp("yes",choice)==0)
+							if(status==0)
 							{
-							status=!status;
-							printf("\nYour Account has been unblocked\n");
-							}
-							else if(strcmp("Yes",choice)==0)
-							{
+								printf("\nAre you sure to unblock your account:");
+								scanf("%s",&choice);
+								if(strcmp("yes",choice)==0)
+								{
 								status=!status;
 								printf("\nYour Account has been unblocked\n");
-							}	
+								}
+								else if(strcmp("Yes",choice)==0)
+								{
+									status=!status;
+									printf("\nYour Account has been unblocked\n");
+								}	
+								else
+								{
+									printf("\n	Your Account has not been unblocked\n");
+								}
+							}
 							else
 							{
-								printf("\n	Your Account has not been unblocked\n");
+								printf("\nYour Account Has not been blocked\n Then you can't unblock\n");
 							}
 						}
 						else if(strcmp("Unblock",blo)==0)
